@@ -1,0 +1,79 @@
+
+/* 120 pixels in height
+Full width of the viewport
+
+body {
+#4056A1 as its default background colour
+#FFFFFF as its default font colour
+<span> within the <nav> uses Bungee as its default font-family
+1.5ems of space on the right and left between the content and the edges */
+
+.navigation {
+  height: 120px;
+  width: 100vw;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  font-family:'Source Sans Pro', sans-serif;
+  padding: 0 1.5em;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/dotnoise-light-grey.png");
+}
+
+
+/* 
+nav {
+  height: 120px;
+  width: 100vw;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-inbetween;
+  font-family:'Source Sans Pro', sans-serif;
+  flex-direction: row;
+} */
+
+/* header {
+  margin-top: 120px;
+  height: 400px;
+  width: 100%;
+  displaY: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FF8000;
+
+} */
+
+nav span {
+  font-family: 'Bungee', san-serif;
+  font-size: xx-large;
+}
+
+/* greater than sign means targetting only first level div */
+nav > div {
+  display: flex;
+  flex-direction: column;
+  font-size: x-large;
+  align-items: center;
+}
+
+nav i {
+  color: cornsilk;
+}
+
+
+
+/*
+.newTweetButton {
+  padding-right: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+ */ 

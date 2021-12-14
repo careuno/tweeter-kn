@@ -18,8 +18,27 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  
 }
+
+/* when you do width: 90% it only applies to one side, so do margin 0 5% to do it from left/right, 0 is to set top/bottom to 0 */
+main {
+  margin: 0 5%;
+  background-color: #f4f1ec;
+  display: flex;
+  align-items: center;
+}
+
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ body {
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 1000px;
+  
+ }
+
+ /* font-family: 'Bungee', cursive; */
