@@ -1,7 +1,7 @@
 "use strict";
 
 // Require fs to write to initial-tweets.json
-const fs = require("fs");
+const fs = require("fs"); //built in module with node, used if you ever bring in files
 // Requiring a JSON file automatically parses it and returns the data.
 let tweetsJSON = require('../data-files/initial-tweets.json');
 
