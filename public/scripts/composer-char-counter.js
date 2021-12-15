@@ -25,6 +25,5 @@ This script is for CHARACTER COUNTER
         $(this).parent().find('.counter').removeClass('negative-num');
       }
     ;})
-
-  
 });
+

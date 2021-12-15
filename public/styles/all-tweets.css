@@ -1,9 +1,21 @@
-article {
+
+#all-tweets {
   background-color: #f4f1ec;
   display: flex;
   flex-direction: column;
-  border-style: solid;
+  margin-top: 10px;
 }
+.tweet {
+  border-style: solid;
+  padding: 25px 15px;
+}
+article.tweet {
+  margin-top: 20px;
+}
+article.tweet:hover {  
+  box-shadow: 10px 10px #a29784;
+}
+/* ---------------- HEADER ------------------------ */
 
 article header {
   font-weight: 300;
@@ -12,17 +24,58 @@ article header {
   /* width: 100%; */
   display: flex; 
   flex-direction: row;
+  justify-content: space-between;
+}
+.profile-icon-name {
+  display: flex;
+  flex-direction: row;
 }
 
-h5 {
+.profile-icon-name h5 {
   font-weight: 300;
+  font-size: 18px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
 
-header p {
-font-size: 19px;
+#handle {
+  font-weight: 600;
+  color: #a29784;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+#individ-tweet {
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-bottom-color: #545149;
+  border-bottom-width: 3px;
+  border-radius: 2px;
+  padding: 20px 0px;
+
+}
+/* ---------------- FOOTER------------------------ */
+article footer {
+  display: flex; 
+  justify-content: space-between;
 }
 
 footer p {
   font-size: 15px;
   font-weight: 600;
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin: 0px 5px;
+  padding-bottom: 10px;
 }
+
+footer i {
+  font-size: 14px;
+}
+.cta-icons i:hover {
+    /* background-color: #a29784; */
+    color: #a29784;;
+}
+
