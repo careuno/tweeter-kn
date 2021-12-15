@@ -1,22 +1,44 @@
 form {
-  align-items: center;
+  /* align-items: center; */
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
 }
 
-.new-tweet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-button.tweet-buttom {
+button.tweet-button {
   font-size: 16px; 
   font-family: 'Bungee';
   color: #FFFFFF;
   background-color: #4056A1;
+  border: none;
+  border-radius: 1px;
 }
 
+.form-footer {
+  display: flex; 
+  justify-content: space-between
+}
+
+
 textarea#tweet-text {
-  background-color: ;
-  resize: none; 
+  width: 100%;
+  border: 1px solid transparent;
+  border-bottom-color: #545149;
+  border-bottom-width: 3px;
+  border-radius: 2px;
+  resize: none;
+  background-color: #f4f1ec ;
 
 } 
+
+.button-counter {
+  font-size: 20px;
+  font-family: 'Bungee';
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+}
+
+.negative-num {
+  color: red;
+}
