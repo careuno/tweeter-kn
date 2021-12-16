@@ -29,6 +29,7 @@ article header {
 .profile-icon-name {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .profile-icon-name h5 {
