@@ -4,54 +4,100 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
 
 
-$(() => {
-  //once browser is loaded, you will have listen to a submit tweet from the browser
-  //that will trigger a createTweetElement function that will have an ajax request
-  //with AJAX request, we will combine jQuery methods to reference the DOM and create new elements for the DOM to render
+$(() => { //once document is loaded/ready, load the tweets, toggle the tweet form and listen for a tweet post
   
-  $("#all-tweets").empty(); //to prevent repeated post rendering
-  renderTweets(data);
+  loadTweets();
 
-  // add an event listener that listens for the submit event
+  $(".write-new-tweet").click(function(){
+    $(".new-tweet").slideToggle();
+    $('#tweet-text').focus(); //cursor on text area
+  });
+
   const $form = $("#new-post-form");
   $form.on("submit", onSubmit);
+
+
+  //$form.on("keypress", onSubmit);
+  $('#tweet-text').on('keydown', function(event) {
+    console.log('event.keyCode', event.keyCode)
+    if (event.keyCode === 13) {
+      console.log('hello')
+      $('.tweet-button').click();
+
+    }
+  });
+
 });
 
+
+//------------------------------------------------ FUNCTIONS ----------------------------------------------------------//
+
+const onSubmit = function (event) {
+  event.preventDefault();
+  const text = $('#tweet-text').val();
+  const counter = text.length;
+  const serializedData = $(this).serialize();
+
+  //Browser displays error when ---- tweet input is empty when submitting
+  if (!text) {
+    $('#error-empty').slideDown(1000);
+  } else {
+    $('#error-empty').slideUp(1000);
+  }
+
+  //Browser displays error when ---- content is too long when submitting
+    if (counter > 140) {
+      $('#error-max-show').slideDown(1000);
+     // $('#error-max-show').slideUp(3000);
+    } else {
+    
+      $.post('/tweets', serializedData)
+        .then(()=>{
+          $('#tweet-text').val(''); //if successful submission clear text field
+          $('#tweet-text').focus(); //return to input for another post
+          $('.counter').val('140');
+          loadTweets();
+        }).catch(error => console.log(error));
+    }
+
+   
+};
+
+const loadTweets = function() {
+  $.get('/tweets') //using AJAX to fetch get data
+    .then((response) => {
+      $("#all-tweets").empty();
+      renderTweets(response);
+    })
+    .catch((error) => {
+      console.log('Error while loading tweets', error)
+    });
+};
+
+const renderTweets = function (tweets) {
+  for (let tweet of tweets) {
+    const $newTweet = createTweetElement(tweet);
+    $("#all-tweets").prepend($newTweet); //displays the tweets with newest at the top
+  }
+};
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const createTweetElement = (tweetData) => {
   const username = tweetData.user.name; // better to not name in variables, not reused, so unnecessary lines of code
   const avatar = tweetData.user.avatars;
   const userHandle = tweetData.user.handle;
-  const postText = tweetData.content.text;
-  // const $postText = $('<p id'in>').text(`Post: ${tweetData.contet.text}`);
-//<p id='individ-tweet'= $('<h3>').text(`Author: ${post.userId}`);
   const timePosted = tweetData.created_at;
+  const postText = tweetData.content.text;
+  const safeHTML = escape(postText);
+  // const $postText = $('<textarea>').text(`Post input: ${tweetData.content.text}`);
+//{ <p id='individ-tweet'= $('<h3>').text(`Author: ${post.userId}`);}
 
   const $tweet = $(`
   <article class='tweet'>
@@ -62,7 +108,7 @@ const createTweetElement = (tweetData) => {
       </div>
       <h5 id='handle'>${userHandle}</h5>
     </header>
-    <p id='individ-tweet'>${postText}</p>
+    <p id='individ-tweet'>${safeHTML}</p>
     <footer>
       <p>${timeago.format(timePosted)}</p> 
       <div class="cta-icons">
@@ -74,74 +120,12 @@ const createTweetElement = (tweetData) => {
   </article>
 `); //timeago converts time to how long ago it was posted
 
+
   return $tweet;
 };
 
-const renderTweets = function (tweets) {
-  // loops through tweets
-  for (let tweet of tweets) {
-    // calls createTweetElement for each tweet
-    const $newTweet = createTweetElement(tweet);
-    // calls createTweetElement for each tweet
-    $("#all-tweets").prepend($newTweet);
-  }
-};
 
 
-const onSubmit = function (event) {
-  event.preventDefault();
-  const text = $('#tweet-text').val();
-  const counter = $('.counter').val();
-
-  //The user should be given an error that their tweet is not present
-  if (!text) {
-   return alert("Can't submit empty tweet");
-  } 
-
-  // content is too long
-    if (counter.length > 140) {
-      return alert("Nobody reads long tweets");
-    }
-
-  const serializedData = $(this).serialize();
-
-  $.post('/tweets', serializedData)
-    .then(() => {
-    //load tweets
-    console.log('success')
-  });
-};
-
-const loadTweets = function() {
-  $.get('/tweets') //using AJAX to fetch get data
-    .then(() => {
-      console.log('new', 'Success!')
-    })
-};
-
-loadTweets()
 
 
-// create an AJAX POST request in client.js that sends the form data to the server.
 
-// 
-
-
-// // content is too long
-//     if ($('counter') > 140) {
-//       alert("Nobody reads long tweets");
-//     }
-// //The form should not be cleared
-
-// //The form should not submit
-
-// console.log(serializeData);
-//either pass a callback as a parameter or let it return a promise and apply .then
-//  $.post('/api/posts', serializedData).then(() => {})
-// $.post('/tweets', serializedData,(response) => {
-//   console.log(response)
-// });
-
-//fetchPosts();
-
-// prevent the default behaviour of the submit event (data submission and page refresh)
