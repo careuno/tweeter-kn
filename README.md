@@ -12,10 +12,6 @@ https://user-images.githubusercontent.com/87393841/146662706-53460652-a456-433d-
 https://user-images.githubusercontent.com/87393841/146662703-df74dd92-5206-4192-b299-dff51dccf53b.mov
 
 
-https://user-images.githubusercontent.com/87393841/146663243-654ec3b8-dc9f-453b-8266-b7ac4f197a8d.mov
-
-
-
 !["Screenshot of large screen"](https://github.com/careuno/tweeter-kn/blob/master/docs/Tweeter%20larger%20than%20768px.png)
 
 !["screenshot of small screen"](https://github.com/careuno/tweeter-kn/blob/master/docs/Tweeter%20768px.png)
