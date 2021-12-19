@@ -5,17 +5,22 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## Final Product
 
+!["Video of Features"](url)
+
+!["Video of Error Handling"](url)
+
 !["Screenshot of Main Page"](url)
 
 !["screenshot of Create Tweet Form"](url)
 
 
 ## Key Features
-- Write and post new tweets to your feed and have them populate without a page refresh
+- Write and post new tweets to your feed and have them populate without a page refresh.
 
 ## Feature Additions
-- Error messages displayed the moment character count is reached rather than on submission
-- Toggle form for new tweet when needed for easy feed reading
+- Error messages displayed the moment character count is reached rather than on submission.
+- Toggle form for new tweet when needed for easy feed reading.
+- Return to top of page button. 
 
 ## Getting Started
 
@@ -32,8 +37,6 @@ Tweeter is a simple, single-page Twitter clone.
 - Chance 1.0.2
 - md5 2.1.0
 
-
-
 ## Getting Started
 1. Install all dependencies (using the `npm install` command).
 2. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
@@ -45,3 +48,6 @@ Tweeter is a simple, single-page Twitter clone.
 - Populating posts from different users (and changing individual posts to submit with proper username).
 - Make layout responsive across more devices/media.
 - Enable multi-media posts. 
+- Text area of form to dynamically change when writing longer tweets. 
+- Have navigation bar words disappear while scrolling down. 
+- Animate new post with a slide.
