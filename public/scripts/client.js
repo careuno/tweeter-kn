@@ -10,20 +10,18 @@ $(() => { //once document is loaded/ready, load the tweets, toggle the tweet for
   
   loadTweets();
 
-  $(".write-new-tweet").click(function(){
-    $(".new-tweet").slideToggle();
+  $(".write-new-tweet").click(function() {
+    $(".new-tweet").slideToggle(); //show form
     $('#tweet-text').focus(); //cursor on text area
   });
 
   const $form = $("#new-post-form");
   $form.on("submit", onSubmit);
 
-
+  //considers 'Enter' key to be click of submit button
   $('#tweet-text').on('keydown', function(event) {
     if (event.keyCode === 13) {
       $('.tweet-button').click();
-   
-
     }
   });
 
@@ -32,7 +30,7 @@ $(() => { //once document is loaded/ready, load the tweets, toggle the tweet for
 
 //------------------------------------------------ FUNCTIONS ----------------------------------------------------------//
 
-const onSubmit = function (event) {
+const onSubmit = function(event) {
   event.preventDefault();
   const text = $('#tweet-text').val().trim();
   const counter = text.length;
@@ -49,57 +47,51 @@ const onSubmit = function (event) {
   }
 
   //Browser displays error when ---- content is too long when submitting
-    if (counter > 140) {
-      $('#error-max-show').slideDown(1000);
-      return;
-     // $('#error-max-show').slideUp(3000);
-    } else {
-    
-      $.post('/tweets', serializedData)
-        .then(()=>{
-          $('#tweet-text').val(''); //if successful submission clear text field
-          $('#tweet-text').focus(); //return to input for another post
-          $('.counter').val('140');
-          loadTweets();
-        }).catch(error => console.log(error));
-    }
-
-   
+  if (counter > 140) {
+    $('#error-max-show').slideDown(1000);
+    return;
+  } else {
+    $.post('/tweets', serializedData)
+      .then(()=>{
+        $('#tweet-text').val(''); //if successful submission clear text field
+        $('#tweet-text').focus(); //return to input for another post
+        $('.counter').val('140');
+        loadTweets();
+      }).catch(error => console.log(error));
+  }
 };
 
 const loadTweets = function() {
-  $.get('/tweets') //using AJAX to fetch get data
+  $.get('/tweets') //using AJAX to fetch data
     .then((response) => {
       $("#all-tweets").empty();
       renderTweets(response);
     })
     .catch((error) => {
-      console.log('Error while loading tweets', error)
+      console.log('Error while loading tweets', error);
     });
 };
 
-const renderTweets = function (tweets) {
+const renderTweets = function(tweets) {
   for (let tweet of tweets) {
     const $newTweet = createTweetElement(tweet);
     $("#all-tweets").prepend($newTweet); //displays the tweets with newest at the top
   }
 };
 
-const escape = function (str) {
+const escape = function(str) { //Preventing Cross-Site Scripting with Escaping or rewrite createTweetElement to build out post with jQuery instead of string literals.
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
 const createTweetElement = (tweetData) => {
-  const username = tweetData.user.name; // better to not name in variables, not reused, so unnecessary lines of code
+  const username = tweetData.user.name; 
   const avatar = tweetData.user.avatars;
   const userHandle = tweetData.user.handle;
   const timePosted = tweetData.created_at;
   const postText = tweetData.content.text;
   const safeHTML = escape(postText);
-  // const $postText = $('<textarea>').text(`Post input: ${tweetData.content.text}`);
-//{ <p id='individ-tweet'= $('<h3>').text(`Author: ${post.userId}`);}
 
   const $tweet = $(`
   <article class='tweet'>

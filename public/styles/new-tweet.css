@@ -1,25 +1,49 @@
+/* ---------------- WHOLE FORM --------------------------- */
+
+.new-tweet {
+  display:none;
+  margin-top: 20px;
+}
+
+/* ---------------- ERROR MESSAGES ------------------------ */
+
+#error-max-show {
+  display: none;
+  color: red; 
+  font-size: 20px;
+  font-weight: 600;
+  border: 3px solid red;
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin: 5px 0px;
+}
+
+.error-margin {   /* -- added margin for alignment when error msg pops up--- */
+  margin-top: 1.4em;
+}
+
+#error-empty {
+  display: none;
+  color: red; 
+  font-size: 20px;
+  font-weight: 600;
+  border: 3px solid red;
+  border-radius: 3px;
+  padding: 1px 5px;
+  margin: 5px 0px;
+}
+
+.margin-empty-tweet {  /* -- added margin for alignment when error msg pops up--- */
+  margin-top: 1.3em;
+}
+
+/* ----------------------- FORM ------------------------ */
+
 form {
-  /* align-items: center; */
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600;
+  margin-top: 0.5em;
 }
-
-
-button.tweet-button {
-  font-size: 16px; 
-  font-family: 'Bungee';
-  color: #FFFFFF;
-  background-color: #4056A1;
-  border: none;
-  border-radius: 1px;
-}
-
-.form-footer {
-  display: flex; 
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
 
 textarea#tweet-text {
   width: 100%;
@@ -29,10 +53,32 @@ textarea#tweet-text {
   border-radius: 2px;
   resize: none;
   background-color: #f4f1ec ;
+  padding: 0 8px;
 
 } 
 
-.button-counter {
+.form-footer {
+  display: flex; 
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.tweet-button {
+  font-size: 16px; 
+  font-family: 'Bungee';
+  color: #FFFFFF;
+  background-color: #4056A1;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tweet-button:hover {
+  box-shadow: 0 2px 2px 0 grey, 0 2px 2px 0 grey;
+}
+
+.counter {
   font-size: 20px;
   font-family: 'Bungee';
   display: flex; 

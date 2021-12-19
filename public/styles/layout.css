@@ -10,19 +10,12 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
-
 body {
-  color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
-  align-items: center;
-  
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* when you do width: 90% it only applies to one side, so do margin 0 5% to do it from left/right, 0 is to set top/bottom to 0 */
 main {
   margin: 0 5%;
   background-color: #f4f1ec;
@@ -31,16 +24,38 @@ main {
   justify-content: center;
 }
 
+@media only screen and (min-width: 1024px) {   /* in order of occurence in HTML file */
 
+  .navigation {
+    background-color: #405ba0;
+    background-image: url("https://www.transparenttextures.com/patterns/dotnoise-light-grey.png");
+  }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+  .fa-angle-double-down:hover{
+  color: orange;
+  }
 
- body {
-  font-family: 'Source Sans Pro', sans-serif;
-  /* height: 1000px; */
+  .profile-feed {
+    display: flex;
+  }
   
- }
+  #profile {
+    margin-top: 6.4em;
+    margin-left: 1.5em;
+    height: 40%;
+    width: 100%;
+  }
 
- /* font-family: 'Bungee', cursive; */
+  #profile-image {
+    padding-top: 2em;
+  } 
+  .container {
+    width: 100%;
+    margin: 5.15em 1.5em;
+  }
+
+  .profile-feed {
+    display: flex;
+  }
+
+}

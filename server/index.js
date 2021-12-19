@@ -8,18 +8,12 @@ const bodyParser    = require("body-parser");
 const app           = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public")); // makes it possible to access files from this folder via HTTP, meaning you can open the file in your browser and see the file https://masteringjs.io/tutorials/express/app-use-static
+app.use(express.static("public")); 
 
 // The in-memory database of tweets. It's a basic object with an array in it.
 const db = require("./lib/in-memory-db");
 
 console.log('db', db)
-// //db {
-//   tweets: [
-//     { user: [Object], content: [Object], created_at: 1639261097698 },
-//     { user: [Object], content: [Object], created_at: 1639347497698 }
-//   ]
-// }
 
 // The `data-helpers` module provides an interface to the database of tweets.
 // This simple interface layer has a big benefit: we could switch out the
@@ -29,15 +23,9 @@ console.log('db', db)
 // Because it exports a function that expects the `db` as a parameter, we can
 // require it and pass the `db` parameter immediately:
 const DataHelpers = require("./lib/data-helpers.js")(db);
-//so this brings in the object and the functions that are saved as properties
-//and later you can access them as DataHelpers.saveTweet(newTweet,callback) or DataHelpers.getTweets(callback)
-
-//developer has to define the callback when calling DataHelpers.saveTweet(newTweet,callback, an eg. of the callback would be writing a function that updates your page 
-// dataHelper.saveTweets({My new Tweet object},()=>{/*update Page*/})
 
 
-
-// Update the dates for the initial tweets (data-files/initial-tweets.json).
+// Updates the dates for the initial tweets (data-files/initial-tweets.json).
 require("./lib/date-adjust")();
 
 // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
