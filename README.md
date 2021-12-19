@@ -7,14 +7,13 @@ Tweeter is a simple, single-page Twitter clone.
 
 
 
+
+https://user-images.githubusercontent.com/87393841/146663187-45cdc780-e53e-4e4a-b4a7-8e185b7d8e18.mov
+
 https://user-images.githubusercontent.com/87393841/146662706-53460652-a456-433d-b787-8abbce66ac6b.mov
 
 
 https://user-images.githubusercontent.com/87393841/146662703-df74dd92-5206-4192-b299-dff51dccf53b.mov
-
-
-
-https://user-images.githubusercontent.com/87393841/146663187-45cdc780-e53e-4e4a-b4a7-8e185b7d8e18.mov
 
 
 
