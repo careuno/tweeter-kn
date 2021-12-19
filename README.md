@@ -5,13 +5,13 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## Final Product
 
-!["Video of Features"](url)
+!["Video of Features"](https://github.com/careuno/tweeter-kn/blob/master/docs/tweeter-demo.mov)
 
-!["Video of Error Handling"](url)
+!["Video Responsive"](https://github.com/careuno/tweeter-kn/blob/master/docs/tweeter-responsive.mov)
 
-!["Screenshot of Main Page"](url)
+!["Screenshot of large screen"](https://github.com/careuno/tweeter-kn/blob/master/docs/Tweeter%20larger%20than%20768px.png)
 
-!["screenshot of Create Tweet Form"](url)
+!["screenshot of small screen"](https://github.com/careuno/tweeter-kn/blob/master/docs/Tweeter%20768px.png)
 
 
 ## Key Features
