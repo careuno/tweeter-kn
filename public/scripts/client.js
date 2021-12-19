@@ -19,12 +19,10 @@ $(() => { //once document is loaded/ready, load the tweets, toggle the tweet for
   $form.on("submit", onSubmit);
 
 
-  //$form.on("keypress", onSubmit);
   $('#tweet-text').on('keydown', function(event) {
-    console.log('event.keyCode', event.keyCode)
     if (event.keyCode === 13) {
-      console.log('hello')
       $('.tweet-button').click();
+   
 
     }
   });
@@ -36,20 +34,24 @@ $(() => { //once document is loaded/ready, load the tweets, toggle the tweet for
 
 const onSubmit = function (event) {
   event.preventDefault();
-  const text = $('#tweet-text').val();
+  const text = $('#tweet-text').val().trim();
   const counter = text.length;
   const serializedData = $(this).serialize();
 
   //Browser displays error when ---- tweet input is empty when submitting
   if (!text) {
+    $('.new-tweet').addClass('margin-empty-tweet');
     $('#error-empty').slideDown(1000);
+    return;
   } else {
+    $('.new-tweet').removeClass('margin-empty-tweet');
     $('#error-empty').slideUp(1000);
   }
 
   //Browser displays error when ---- content is too long when submitting
     if (counter > 140) {
       $('#error-max-show').slideDown(1000);
+      return;
      // $('#error-max-show').slideUp(3000);
     } else {
     
